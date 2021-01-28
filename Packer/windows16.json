@@ -1,8 +1,8 @@
 {
   "min_packer_version": "0.12.0",
   "variables": {
-    "profile": "YOUR_AWS_POFILE",
-    "region": "YOUR_AWS_REGION"
+    "profile": "default",
+    "region": "us-east-2"
   },
 
   "builders": [{
@@ -20,7 +20,7 @@
     },
     "instance_type": "t2.micro",
     "ami_name": "windows2016Server-{{timestamp}}",
-    "user_data_file":"../scripts/SetUpWinRM.ps1",
+    "user_data_file":"./scripts/SetUpWinRM.ps1",
     "communicator": "winrm",
     "winrm_username": "Administrator",
     "winrm_insecure": true,
@@ -45,8 +45,8 @@
     {
     "type": "powershell",
     "scripts": [
-        "../scripts/disable-uac.ps1",
-        "../scripts/YOURSCRIPTHERE.ps1"
+        "./scripts/disable-uac.ps1",
+        "./scripts/choco-install.ps1"
     ]
   },
   {
